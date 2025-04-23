@@ -9,9 +9,9 @@ import {
 
 const router = Router();
 
-router.post('/thoughts', createThought);
-router.get('/thoughts/user/:userId', getThoughtsByUser);
-router.get('/thoughts/:thoughtId', getThoughtById);
+router.post('/', createThought);
+router.get('/', getThoughtsByUser);
+router.get('/thoughtId', getThoughtById);
 router.put('/thoughts/:thoughtId', updateThought);
 router.delete('/thoughts/:thoughtId', deleteThought);
 

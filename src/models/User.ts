@@ -12,7 +12,8 @@ const userSchema = new Schema<IUser>({
         type: String,
         required: true,
         unique: true,
-        trim: true
+        trim: true,
+        
     },
     email: {
         type: String,
@@ -40,6 +41,7 @@ const userSchema = new Schema<IUser>({
     id: false,
     strict: true
 });
+
 
 // Virtual para contar número de amigos
 userSchema.virtual('friendCount').get(function () {

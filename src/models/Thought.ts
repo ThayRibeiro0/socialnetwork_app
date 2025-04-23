@@ -1,5 +1,5 @@
 import { Schema, model, Types, Document } from 'mongoose';
-import reactionSchema from './Reaction';
+import reactionSchema from './Reaction.js';
 
 // Interface to define the structure of a Reaction document
 interface IReaction extends Document {

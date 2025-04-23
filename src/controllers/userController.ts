@@ -9,9 +9,9 @@ export const createUser = async (req: Request, res: Response) => {
     try {
         const { username, email } = req.body;
 
-        // if (!username || !email) {
-        //     res.status(400).json({ message: 'Username and email are required' });
-        // }
+        if (!username || !email) {
+            res.status(400).json({ message: 'Username and email are required' });
+        }
         // Create a new user
         const newUser = new User({
             username,
@@ -20,6 +20,7 @@ export const createUser = async (req: Request, res: Response) => {
             friends: [],
         });
         await newUser.save();
+        console.log('User created:', newUser);
 
         res.status(201).json(newUser);
     } catch (err) {
@@ -34,6 +35,7 @@ export const getAllUsers = async (_req: Request, res: Response) => {
     try {
         const users = await User.find();
         res.json({ users });
+        console.log('Users retrieved:', users);
     } catch (err) {
         res.status(500).json({ message: (err as Error).message });
     }
