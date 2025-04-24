@@ -1,12 +1,15 @@
 import { Router } from 'express';
 import { addReaction, deleteReaction} from '../../controllers/reactionController.js';
+import { createThought, getThoughtsByUser } from '../../controllers/thoughtController.js';
 
 const router = Router();
 
-// Add a reaction to a thought
-router.post('/', addReaction);
+// /api/reactions
+router.route('/').get(getThoughtsByUser).post(createThought);
 
-// Delete a reaction from a thought
-router.delete('/:reactionId', deleteReaction);
-
-export default router;
+// /api/reactions/:reactionId
+router
+    .route('/:reactionId')
+    .post(addReaction)
+    .delete(deleteReaction);
+export { router as reactionRouter };

@@ -7,7 +7,7 @@ import User from '../models/User.js';
  */
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const { username, email } = req.body;
+        const { username, email, thoughts, friends } = req.body;
 
         if (!username || !email) {
             res.status(400).json({ message: 'Username and email are required' });
@@ -16,8 +16,8 @@ export const createUser = async (req: Request, res: Response) => {
         const newUser = new User({
             username,
             email,
-            thoughts: [],
-            friends: [],
+            thoughts,
+            friends,
         });
         await newUser.save();
         console.log('User created:', newUser);
@@ -33,7 +33,7 @@ export const createUser = async (req: Request, res: Response) => {
  */
 export const getAllUsers = async (_req: Request, res: Response) => {
     try {
-        const users = await User.find();
+        const users = await User.find().populate('thoughts').populate('friends');
         res.json({ users });
         console.log('Users retrieved:', users);
     } catch (err) {

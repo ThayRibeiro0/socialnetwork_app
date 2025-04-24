@@ -1,4 +1,5 @@
 import { Router } from 'express';
+const router = Router();
 import {
     createThought,
     getThoughtsByUser,
@@ -7,12 +8,14 @@ import {
     deleteThought
 } from '../../controllers/thoughtController.js';
 
-const router = Router();
+// // /api/thoughts
+router.route('/users/:userId/thoughts').get(getThoughtsByUser).post(createThought);
 
-router.post('/', createThought);
-router.get('/', getThoughtsByUser);
-router.get('/thoughtId', getThoughtById);
-router.put('/thoughts/:thoughtId', updateThought);
-router.delete('/thoughts/:thoughtId', deleteThought);
+// // /api/thoughts/:thoughtId
+router
+.route('/:thoughtId')
+.get(getThoughtById)
+.put(updateThought)
+.delete(deleteThought);
 
-export default router;
+export { router as thoughtRouter };
