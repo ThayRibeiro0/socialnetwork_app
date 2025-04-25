@@ -1,15 +1,14 @@
 import { Router } from 'express';
 import { addReaction, deleteReaction} from '../../controllers/reactionController.js';
-import { createThought, getThoughtsByUser } from '../../controllers/thoughtController.js';
 
-const router = Router();
+const router = Router({ mergeParams: true });
 
-// /api/reactions
-router.route('/').get(getThoughtsByUser).post(createThought);
+// /api/thoughts/:thoughtId/reactions
+router.route('/:thoughtId/reactions').post(addReaction);
 
-// /api/reactions/:reactionId
-router
-    .route('/:reactionId')
-    .post(addReaction)
-    .delete(deleteReaction);
+// /api/thoughts/:thoughtId/reactions/:reactionId
+router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
+
+
 export { router as reactionRouter };
+

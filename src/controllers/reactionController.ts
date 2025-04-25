@@ -31,7 +31,7 @@ export const deleteReaction = async (req: Request, res: Response) => {
     const updatedThought = await Thought.findByIdAndUpdate(
       thoughtId,
       {
-        $pull: { reactions: { _id: reactionId } }
+        $pull: { reactions: { reactionId: reactionId } }
       },
       { new: true }
     );

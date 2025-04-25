@@ -2,6 +2,17 @@ import { Request, Response, RequestHandler } from 'express';
 import Thought from '../models/Thought.js';
 import User from '../models/User.js';
 
+// Get all thoughts
+export const getAllThoughts = async (_req: Request, res: Response) => {
+  try {
+    const thoughts = await Thought.find();
+    res.status(200).json(thoughts);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao buscar pensamentos', error });
+  }
+};
+
+
 // Create a new thought
 export const createThought: RequestHandler = async (req: Request, res: Response) => {
   try {
@@ -100,6 +111,7 @@ export const deleteThought: RequestHandler = async (req: Request, res: Response)
 };
 
 export default {
+  getAllThoughts,
   createThought,
   getThoughtsByUser,
   getThoughtById,

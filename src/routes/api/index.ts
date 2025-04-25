@@ -8,6 +8,6 @@ const router = Router();
 // Using the routes
 router.use('/users', userRouter);            // Routes to users
 router.use('/thoughts', thoughtRouter);      // Routes to thoughts
-router.use('/reactions', reactionRouter);  // Routes to reactions
+router.use('/thoughts', reactionRouter);  // Routes to reactions
 
 export default router;
