@@ -85,6 +85,10 @@ To deploy this backend project:
 - Configure environment variables for your production database URI.
 - Deploy on platforms like **Render**, **Netlify**, or **Heroku**.
 
+### Deployed Application
+Check the live application here:  
+[🔗 [Kanban Board Live](https://kanbanboard-app.onrender.com/board)](https://kanbanboard-app.onrender.com)
+
 ## Screenshots
 
 <div>
